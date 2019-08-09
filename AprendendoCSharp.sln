@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-PrimeiroProjeto", "1-Prim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-CriandoVariaveis", "2-CriandoVariaveis\2-CriandoVariaveis.csproj", "{15278EA3-93D0-4791-B25A-F9C6B206673A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13-LacosEncadeadosComBreak", "13-LacosEncadeadosComBreak\13-LacosEncadeadosComBreak.csproj", "{34045479-697B-40CB-BEFE-1F4697D7A40E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{15278EA3-93D0-4791-B25A-F9C6B206673A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15278EA3-93D0-4791-B25A-F9C6B206673A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15278EA3-93D0-4791-B25A-F9C6B206673A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34045479-697B-40CB-BEFE-1F4697D7A40E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34045479-697B-40CB-BEFE-1F4697D7A40E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34045479-697B-40CB-BEFE-1F4697D7A40E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34045479-697B-40CB-BEFE-1F4697D7A40E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
