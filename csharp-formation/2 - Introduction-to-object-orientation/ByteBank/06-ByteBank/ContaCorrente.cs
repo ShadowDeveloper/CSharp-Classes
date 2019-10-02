@@ -12,7 +12,20 @@ namespace _06_ByteBank
         public Cliente titular;
         public int agencia;
         public int numero;
-        public double saldo = 100.45;
+        private double saldo = 100.45;
+
+        public void DefinirSaldo(double novoSaldo)
+        {
+            if (novoSaldo >= 0)
+            {
+                this.saldo = novoSaldo;
+            }
+        }
+
+        public double ObterSaldo()
+        {
+            return saldo;
+        }
 
         public bool Sacar(double valor)
         {
