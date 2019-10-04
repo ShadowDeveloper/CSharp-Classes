@@ -16,15 +16,30 @@ namespace _06_ByteBank
             conta.Saldo = 10;
             Console.WriteLine("Saldo da conta: " + conta.Saldo);
 
-            cliente.nome = "Rodrigo Bruno de Souza";
-            cliente.cpf = "399.100.258-35";
-            cliente.profissao = "Garoto de programa";
+            cliente.Nome = "Rodrigo Bruno de Souza";
+            cliente.CPF = "399.100.258-35";
+            cliente.Profissao = "Garoto de programa";
 
             conta.Titular = cliente;
 
-            Console.WriteLine("Nome do cliente: " + conta.Titular.nome);
-            Console.WriteLine("CPF do cliente: " + conta.Titular.cpf);
-            Console.WriteLine("Profissão do cliente: " + conta.Titular.profissao);
+            Console.WriteLine("Nome do cliente: " + conta.Titular.Nome);
+            Console.WriteLine("CPF do cliente: " + conta.Titular.CPF);
+            Console.WriteLine("Profissão do cliente: " + conta.Titular.Profissao);
+
+            Console.WriteLine("===============================");
+
+
+            Animal cachorro = new Animal() {
+                Dono = cliente,
+                Nome = "Pipico",
+                NumeroDeRegistro = 15223554
+            };
+
+            Console.WriteLine("Informações do Animal");
+            Console.WriteLine(" ");
+            Console.WriteLine("Dono Nome: " + cachorro.Dono.Nome);
+            Console.WriteLine("Animal nome: " + cachorro.Nome);
+            Console.WriteLine("Animal numero de registro: " + cachorro.NumeroDeRegistro);
 
             Console.ReadKey();
 

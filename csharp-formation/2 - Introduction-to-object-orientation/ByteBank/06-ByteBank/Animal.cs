@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace _06_ByteBank
 {
-    public class Cliente
+    public class Animal
     {
         public string Nome { get; set; }
-        public string CPF { get; set; }
-        public string Profissao { get; set; }
+        public double NumeroDeRegistro { get; set; }
+        public Cliente Dono { get; set; }
     }
 }
