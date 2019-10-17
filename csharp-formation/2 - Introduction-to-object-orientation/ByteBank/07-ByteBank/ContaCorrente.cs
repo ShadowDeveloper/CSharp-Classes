@@ -14,7 +14,7 @@ namespace _07_ByteBank
         private double _saldo = 100.45; //Underline para quando campo é privado e local
         public Cliente Titular { get; set; }
 
-        public static int TotalDeContasCriadas { get; set; }
+        public static int TotalDeContasCriadas { get; private set; }
 
         public int Agencia
         {
