@@ -17,7 +17,16 @@ namespace _07_ByteBank
             ContaCorrente contaDoRodrigo = new ContaCorrente(867, 4554477);
             ContaCorrente contaDaGabriela = new ContaCorrente(867, 4554488);
             Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
+
+            new Jogador();
+            new Jogador();
+            new Jogador();
+            new Jogador();
+            new Jogador();
+
+            Console.WriteLine("Jogador " + Jogador.TotalJogadores);
             Console.ReadLine();
+
         }
     }
 }
