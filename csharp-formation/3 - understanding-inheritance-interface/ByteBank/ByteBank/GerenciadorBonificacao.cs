@@ -13,7 +13,17 @@ namespace ByteBank
 
         public void Registrar(Funcionario funcionario)
         {
-            funcionario.GetBonificacao();
+            _totalBonificacao += funcionario.GetBonificacao();
+        }
+
+        public void Registrar(Diretor diretor) //Isso  se chama sobrecarga, podemos ter nomes iguais para os métodos mas os arumentos devem ser de tipos diferentes
+        {
+            _totalBonificacao += diretor.GetBonificacao();
+        }
+
+       public double GetTotalBonificacao()
+        {
+            return _totalBonificacao;
         }
     }
 }
