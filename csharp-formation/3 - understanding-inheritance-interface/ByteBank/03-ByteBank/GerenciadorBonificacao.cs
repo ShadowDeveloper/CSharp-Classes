@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using _01_ByteBank.Funcionarios;
+using _03_ByteBank.Funcionarios;
 
-namespace _01_ByteBank
+namespace _03_ByteBank
 {
     class GerenciadorBonificacao
     {

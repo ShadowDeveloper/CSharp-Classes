@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _01_ByteBank.Funcionarios
+namespace _02_ByteBank.Funcionarios
 {
     class Funcionario
     {
@@ -12,10 +12,9 @@ namespace _01_ByteBank.Funcionarios
         public string CPF { get; set; }
         public double Salario { get; set; }
 
-        public double GetBonificacao()
+        public virtual double GetBonificacao()
         {
             return Salario * 0.10;
         }
-
     }
 }

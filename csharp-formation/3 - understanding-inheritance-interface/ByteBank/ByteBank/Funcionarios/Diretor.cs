@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ByteBank.Funcionarios
+namespace _01_ByteBank.Funcionarios
 {
     class Diretor
     {

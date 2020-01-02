@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using _01_ByteBank.Funcionarios;
+using _02_ByteBank.Funcionarios;
 
-namespace _01_ByteBank
+
+namespace _02_ByteBank
 {
     class Program
     {
@@ -21,8 +22,8 @@ namespace _01_ByteBank
                 Salario = 2000
             };
 
-            Console.WriteLine(funcionario.Nome);
-            Console.WriteLine(funcionario.GetBonificacao());
+            Console.WriteLine("Funcionario " + funcionario.Nome);
+            Console.WriteLine("Bonificacao funcionario: " + funcionario.GetBonificacao());
 
             gerenciador.Registrar(funcionario);
 
@@ -34,12 +35,23 @@ namespace _01_ByteBank
                 CPF = "29965554452",
                 Salario = 5000,
             };
-            
-            Console.WriteLine(diretor.Nome);
-            Console.WriteLine(diretor.GetBonificacao());
+
+            Console.WriteLine("Diretor " + diretor.Nome);
             gerenciador.Registrar(diretor);
+            Console.WriteLine("Bonificacao diretor: " + diretor.GetBonificacao());
+            Console.WriteLine("=========================");
+
+
 
             Console.WriteLine("Total da bonificacao funcionários " + "R$" + gerenciador.GetTotalBonificacao());
+            Console.WriteLine("=========================");
+
+            Funcionario diretorTeste = diretor;
+
+            Console.WriteLine("Bonificação de uma referência de Diretor: " + diretor.GetBonificacao());
+            Console.WriteLine("Bonificação de uma referência de Funcionario: " + diretorTeste.GetBonificacao());
+
+            Console.ReadKey();
 
         }
     }
