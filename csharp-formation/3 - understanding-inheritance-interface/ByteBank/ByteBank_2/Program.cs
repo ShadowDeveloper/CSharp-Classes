@@ -22,8 +22,8 @@ namespace ByteBank_2
                 Salario = 2000
             };
 
-            Console.WriteLine(funcionario.Nome);
-            Console.WriteLine(funcionario.GetBonificacao());
+            Console.WriteLine("Funcionario " + funcionario.Nome);
+            Console.WriteLine("Bonificacao funcionario: " + funcionario.GetBonificacao());
 
             gerenciador.Registrar(funcionario);
 
@@ -36,13 +36,15 @@ namespace ByteBank_2
                 Salario = 5000,
             };
 
-            Console.WriteLine(diretor.Nome);
-            Console.WriteLine("Bonificacao diretor: " + diretor.GetBonificacao());
+            Console.WriteLine("Diretor " + diretor.Nome);
             gerenciador.Registrar(diretor);
+            Console.WriteLine("Bonificacao diretor: " + diretor.GetBonificacao());
+            Console.WriteLine("=========================");
+
 
 
             Console.WriteLine("Total da bonificacao funcionários " + "R$" + gerenciador.GetTotalBonificacao());
-
+            Console.WriteLine("=========================");
 
             Funcionario diretorTeste = diretor;
 
