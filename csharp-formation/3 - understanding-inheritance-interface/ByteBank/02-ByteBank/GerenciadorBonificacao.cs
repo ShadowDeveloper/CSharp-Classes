@@ -16,7 +16,7 @@ namespace _02_ByteBank
             _totalBonificacao += funcionario.GetBonificacao();
         }
 
-       public double GetTotalBonificacao()
+        public double GetTotalBonificacao()
         {
             return _totalBonificacao;
         }

@@ -1,11 +1,11 @@
-﻿using ByteBank_2.Funcionarios;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _04_ByteBank.Funcionarios;
 
-namespace ByteBank_2
+namespace _04_ByteBank
 {
     class GerenciadorBonificacao
     {
@@ -16,7 +16,7 @@ namespace ByteBank_2
             _totalBonificacao += funcionario.GetBonificacao();
         }
 
-       public double GetTotalBonificacao()
+        public double GetTotalBonificacao()
         {
             return _totalBonificacao;
         }

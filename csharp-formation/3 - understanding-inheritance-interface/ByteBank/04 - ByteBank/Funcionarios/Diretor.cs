@@ -4,10 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ByteBank_2.Funcionarios
+namespace _04_ByteBank.Funcionarios
 {
     class Diretor : Funcionario // Isso se chama herança : Funcionario. O diretor também tem Nome, CPF e Salario
     {
+
+        public Diretor(string cpf) : base(5000, cpf)
+        {
+        }
+
+        public override void AumentarSalario()
+        {
+            Salario *= 1.15;
+        }
+
         public override double GetBonificacao()
         { 
             return Salario + base.GetBonificacao();

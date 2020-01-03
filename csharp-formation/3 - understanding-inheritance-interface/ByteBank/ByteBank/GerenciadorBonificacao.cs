@@ -16,7 +16,12 @@ namespace _01_ByteBank
             _totalBonificacao += funcionario.GetBonificacao();
         }
 
-       public double GetTotalBonificacao()
+        public void Registrar(Diretor funcionario) // Sobrecarga, onde podemis ter o mesmo método porém com argumentos diferentes
+        {
+            _totalBonificacao += funcionario.GetBonificacao();
+        }
+
+        public double GetTotalBonificacao()
         {
             return _totalBonificacao;
         }
