@@ -10,8 +10,19 @@ namespace _04_ByteBank
     {
         static void Main(string[] args)
         {
-
-            ContaCorrente conta = new ContaCorrente(0, 24575);
+            try
+            {
+                ContaCorrente conta = new ContaCorrente(0, 0);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
             //conta.Agencia = 465;
 
             Metodo();

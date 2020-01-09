@@ -23,9 +23,18 @@ namespace _04_ByteBank
         //Constructor
         public ContaCorrente(int agencia, int numero)
         {
-            if (agencia <= 0 || numero <= 0)
+
+            if (agencia <= 0 && numero != 0)
             {
-                Console.WriteLine(Titular.Nome);
+                throw new ArgumentException("O argumento Agencia deve ser maior que 0.");
+            }
+            else if (numero <= 0 && agencia != 0)
+            {
+                throw new ArgumentException("O argumento numero deve ser maior que 0."); ;
+            }
+            else if (agencia <= 0 && numero <= 0)
+            {
+                throw new ArgumentException("Os argumentos numero e agencia devem ser maior que 0.");
             }
 
             Agencia = agencia;
