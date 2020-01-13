@@ -12,14 +12,19 @@ namespace _06_ByteBank
         {
             try
             {
-                ContaCorrente conta = new ContaCorrente(0, 0);
+                ContaCorrente conta = new ContaCorrente(544, 4688);
                 conta.Depositar(500);
-                Console.WriteLine(conta.Saldo);
+                conta.Sacar(700);
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Argumento com problema: " + ex.ParamName);
+            }
+            catch (SaldoInsuficienteException ex)
+            {
+                Console.WriteLine("Exceção do Saldo insuficiente Exception");
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
@@ -45,7 +50,7 @@ namespace _06_ByteBank
         private static void TestaDivisao(int divisor)
         {
             int resultado = Dividir(10, divisor);
-            Console.WriteLine("Resultado da divisão de 10 por " + divisor + " é " + resultado);
+            //Console.WriteLine("Resultado da divisão de 10 por " + divisor + " é " + resultado);
         }
 
         private static int Dividir(int numero, int divisor)
