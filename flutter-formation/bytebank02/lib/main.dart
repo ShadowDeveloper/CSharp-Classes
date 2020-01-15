@@ -15,6 +15,10 @@ class ByteBankApp extends StatelessWidget {
 }
 
 class FormularioTransferencia extends StatelessWidget {
+  final TextEditingController _numeroContaController =
+      TextEditingController(); // ou new TextEditingController()
+  final TextEditingController _valorController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +33,7 @@ class FormularioTransferencia extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(16.0),
             child: TextField(
+              controller: _numeroContaController,
               style: TextStyle(fontSize: 20.0),
               decoration: InputDecoration(
                 labelText: "Numero do coletor",
@@ -40,6 +45,7 @@ class FormularioTransferencia extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(16.0),
             child: TextField(
+              controller: _valorController,
               style: TextStyle(
                 fontSize: 20.0,
               ),
@@ -53,7 +59,18 @@ class FormularioTransferencia extends StatelessWidget {
             ),
           ),
           RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              final int numeroConta = int.tryParse(_numeroContaController.text);
+              final double valor = double.tryParse(_valorController.text);
+
+              if (numeroConta != null && valor != null) {
+                final transferenciaCriada = Transferencia(valor, numeroConta);
+
+
+                debugPrint("Transferencia realizada para conta "
+                    "$transferenciaCriada");
+              }
+            },
             color: Colors.white,
             textColor: Colors.deepOrangeAccent,
             child: Text("Confirmar"),
@@ -115,4 +132,11 @@ class Transferencia {
   final int numeroConta;
 
   Transferencia(this.valor, this.numeroConta);
+
+  @override
+  String toString() {
+    return 'Transferencia{valor: $valor, numeroConta: $numeroConta}';
+  }
+
+
 }
