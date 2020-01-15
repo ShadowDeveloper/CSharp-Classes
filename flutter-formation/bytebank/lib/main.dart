@@ -36,7 +36,6 @@ class ListaTransferencia extends StatelessWidget {
 }
 
 class ItemTransferencia extends StatelessWidget {
-
   final Transferencia _transferencia;
 
   ItemTransferencia(this._transferencia);
@@ -56,5 +55,6 @@ class ItemTransferencia extends StatelessWidget {
 class Transferencia {
   final double valor;
   final int numeroConta;
+
   Transferencia(this.valor, this.numeroConta);
 }
