@@ -11,7 +11,8 @@ void main() =>
 class ByteBankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FormTransference();
+    //return FormTransference();
+    return TransferenceList();
   }
 }
 
@@ -25,25 +26,25 @@ class FormTransference extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.deepOrangeAccent,
       appBar: AppBar(
-        title: Text("NewPonto form"),
+        title: Text("NewPonto"),
         backgroundColor: Colors.deepOrangeAccent,
         elevation: 0,
       ),
       body: Column(
         children: <Widget>[
           Editor(
-            _valorController,
+            _accountNumberController,
             "Número coletor",
             "0000",
           ),
           Editor(
-            _accountNumberController,
+            _valorController,
             "Valor",
             "0.00",
             iconParam: Icons.monetization_on,
           ),
           RaisedButton(
-            onPressed: () => _createTransference(),
+            onPressed: () => _createTransference(context),
             color: Colors.white,
             textColor: Colors.deepOrangeAccent,
             child: Text("Confirmar"),
@@ -53,16 +54,17 @@ class FormTransference extends StatelessWidget {
     );
   }
 
-  void _createTransference() {
+  void _createTransference(BuildContext context) {
     final int accountNumber = int.tryParse(_accountNumberController.text);
     final double transferValue = double.tryParse(_valorController.text);
 
     if (accountNumber != null && transferValue != null) {
       final transferenceCreated = Transference(transferValue, accountNumber);
+      debugPrint('Criando transferencia');
       debugPrint('Transferencia $transferenceCreated');
+      Navigator.pop(context, transferenceCreated);
     }
   }
-
 }
 
 class Editor extends StatelessWidget {
@@ -112,7 +114,17 @@ class TransferenceList extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          final Future<Transference> future =
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return FormTransference();
+          }));
+
+          future.then((transferResponse) {
+            debugPrint('chegou no then do future');
+            debugPrint('$transferResponse');
+          });
+        },
         backgroundColor: Colors.white,
         child: Icon(
           Icons.add,
