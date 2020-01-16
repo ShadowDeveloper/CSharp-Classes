@@ -97,6 +97,8 @@ class Editor extends StatelessWidget {
 }
 
 class TransferenceList extends StatelessWidget {
+  final List<Transference> _listTransferences = List();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,12 +108,12 @@ class TransferenceList extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         elevation: 0,
       ),
-      body: Column(
-        children: <Widget>[
-          TransferenceItem(Transference(100.0, 1000)),
-          TransferenceItem(Transference(200.0, 1024)),
-          TransferenceItem(Transference(300.0, 2048)),
-        ],
+      body: ListView.builder(
+        itemCount: _listTransferences.length,
+        itemBuilder: (context, index) {
+          final transference = _listTransferences[index];
+          return TransferenceItem(transference);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -123,6 +125,8 @@ class TransferenceList extends StatelessWidget {
           future.then((transferResponse) {
             debugPrint('chegou no then do future');
             debugPrint('$transferResponse');
+
+            _listTransferences.add(transferResponse);
           });
         },
         backgroundColor: Colors.white,
