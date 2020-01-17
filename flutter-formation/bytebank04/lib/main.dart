@@ -26,7 +26,7 @@ class FormTransference extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         appBar: AppBar(
           title: Text("NewPonto"),
-          backgroundColor: Colors.deepOrangeAccent, 
+          backgroundColor: Colors.deepOrangeAccent,
           elevation: 0,
         ),
         body: SingleChildScrollView(
@@ -128,13 +128,15 @@ class _TransferenceListState extends State<TransferenceList> {
           }));
 
           future.then((transferResponse) {
+            Future.delayed(Duration(seconds: 5), () {
+              if (transferResponse != null) {
+                setState(() {
+                  _listTransferences.add(transferResponse);
+                });
+              }
+            });
             // debugPrint('chegou no then do future');
             // debugPrint('$transferResponse');
-            if (transferResponse != null) {
-              setState(() {
-                _listTransferences.add(transferResponse);
-              });
-            }
           });
         },
         backgroundColor: Colors.white,
