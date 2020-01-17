@@ -3,14 +3,32 @@ import 'package:flutter/services.dart';
 
 void main() => runApp(
       MaterialApp(
+        theme: ThemeData(
+          primaryColor: Colors.white,
+          accentColor: Colors.deepOrangeAccent,
+          scaffoldBackgroundColor: Colors.white,
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.deepOrangeAccent,
+            textTheme: ButtonTextTheme.primary,
+          ),
+        ),
+        darkTheme: ThemeData(
+          primaryColor: Colors.black,
+          accentColor: Colors.deepOrangeAccent,
+          scaffoldBackgroundColor: Colors.black,
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.deepOrangeAccent,
+            textTheme: ButtonTextTheme.normal,
+          ),
+        ),
         home: ByteBankApp(),
+        debugShowCheckedModeBanner: false,
       ),
     );
 
 class ByteBankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //return FormTransference();
     return TransferenceList();
   }
 }
@@ -23,10 +41,10 @@ class FormTransference extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepOrangeAccent,
+        // backgroundColor: Colors.deepOrangeAccent,
         appBar: AppBar(
           title: Text("NewPonto"),
-          backgroundColor: Colors.deepOrangeAccent,
+          // backgroundColor: Colors.deepOrangeAccent,
           elevation: 0,
         ),
         body: SingleChildScrollView(
@@ -45,8 +63,8 @@ class FormTransference extends StatelessWidget {
               ),
               RaisedButton(
                 onPressed: () => _createTransference(context),
-                color: Colors.white,
-                textColor: Colors.deepOrangeAccent,
+                // color: Colors.white,
+                // textColor: Colors.deepOrangeAccent,
                 child: Text("Confirmar"),
               )
             ],
@@ -107,10 +125,13 @@ class _TransferenceListState extends State<TransferenceList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepOrangeAccent,
+      // backgroundColor: Colors.deepOrangeAccent,
       appBar: AppBar(
-        title: Text("NewPonto"),
-        backgroundColor: Colors.deepOrangeAccent,
+        title: Text(
+          "NewPonto",
+          style: TextStyle(),
+        ),
+        // backgroundColor: Colors.deepOrangeAccent,
         elevation: 0,
       ),
       body: ListView.builder(
@@ -139,10 +160,10 @@ class _TransferenceListState extends State<TransferenceList> {
             // debugPrint('$transferResponse');
           });
         },
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         child: Icon(
           Icons.add,
-          color: Colors.deepOrangeAccent,
+          // color: Colors.deepOrangeAccent,
         ),
       ),
     );
