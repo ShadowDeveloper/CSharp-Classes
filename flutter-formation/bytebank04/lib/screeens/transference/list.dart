@@ -3,7 +3,6 @@ import 'package:bytebank04/screeens/transference/form.dart';
 import 'package:bytebank04/screeens/transference/item.dart';
 import 'package:flutter/material.dart';
 
-
 class TransferenceList extends StatefulWidget {
   @override
   _TransferenceListState createState() => _TransferenceListState();
@@ -33,19 +32,22 @@ class _TransferenceListState extends State<TransferenceList> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          final Future<Transference> future =
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return FormTransference();
-          }));
+          final Future<Transference> future = Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return FormTransference();
+              },
+            ),
+          );
 
           future.then((transferResponse) {
-            Future.delayed(Duration(seconds: 5), () {
-              if (transferResponse != null) {
-                setState(() {
-                  _listTransferences.add(transferResponse);
-                });
-              }
-            });
+            Future.delayed(
+              Duration(seconds: 5),
+              () {
+                _updateList(transferResponse);
+              },
+            );
             // debugPrint('chegou no then do future');
             // debugPrint('$transferResponse');
           });
@@ -57,5 +59,13 @@ class _TransferenceListState extends State<TransferenceList> {
         ),
       ),
     );
+  }
+
+  void _updateList(Transference transferResponse) {
+    if (transferResponse != null) {
+      setState(() {
+        _listTransferences.add(transferResponse);
+      });
+    }
   }
 }

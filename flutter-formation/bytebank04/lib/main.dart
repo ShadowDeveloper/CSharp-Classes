@@ -32,5 +32,3 @@ class ByteBankApp extends StatelessWidget {
     return TransferenceList();
   }
 }
-
-
