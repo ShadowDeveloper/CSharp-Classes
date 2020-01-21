@@ -10,6 +10,20 @@ namespace _07_ByteBank
     {
         static void Main(string[] args)
         {
+
+            string testeUrl = "http://localhost:8081/ServicosComunicador/";
+            testeUrl = testeUrl.ToLower();
+
+            if (testeUrl.StartsWith("http://") && testeUrl.Contains("http://"))
+            {
+                Console.WriteLine("Caiu no HTTP");
+            }
+            else if (testeUrl.StartsWith("https://") && testeUrl.Contains("https://"))
+            {
+                Console.WriteLine("Caiu no HTTPs");
+            }
+
+
             try
             {
                 ContaCorrente conta = new ContaCorrente(544, 4688);
@@ -35,7 +49,7 @@ namespace _07_ByteBank
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
             //conta.Agencia = 465;
 
             Metodo();
