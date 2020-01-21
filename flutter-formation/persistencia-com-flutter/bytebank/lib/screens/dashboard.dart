@@ -1,6 +1,6 @@
 import 'package:bytebank/screens/contacts_list.dart';
 import 'package:flutter/material.dart';
-import 'package:bytebank/model/constants.dart';
+import 'package:bytebank/helper/constants.dart';
 
 class Dashboard extends StatelessWidget with ComumConstants {
   @override
@@ -25,7 +25,7 @@ class Dashboard extends StatelessWidget with ComumConstants {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => ContacstList(),
+                      builder: (context) => ContactstList(),
                     ),
                   );
                 },
