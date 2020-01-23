@@ -8,7 +8,7 @@ class ComumConstants {
   final String _contacts = "Contacts";
   String get contacts => _contacts; // Um get ou Set pode ser feito assim
 
-  final String _contactFormTitle = "New contact";
+  final String _contactFormTitle = "New Collector";
   String get contactFormTitle => _contactFormTitle;
 
 }

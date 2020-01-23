@@ -11,28 +11,62 @@ class ContactForm extends StatelessWidget {
           ComumConstants().contactFormTitle.toUpperCase(),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(15.0, 8.0, 20.0, 15.0),
-            child: TextField(
-              decoration: InputDecoration(
-                labelText: "Name",
-                hintText: "Ramirez...",
+      body: Container(
+        padding: EdgeInsets.only(top: 20.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(15.0, 8.0, 20.0, 15.0),
+              child: TextField(
+                decoration: InputDecoration(
+                    labelText: "Nome coletor",
+                    labelStyle: TextStyle(
+                      color: Colors.deepOrangeAccent,
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.deepOrangeAccent,
+                      ),
+                    ),
+                    fillColor: Colors.redAccent,
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.deepOrangeAccent),
+                    ),
+                    suffixIcon: Icon(
+                      Icons.text_fields,
+                      color: Colors.deepOrangeAccent,
+                    )),
+                style: TextStyle(fontSize: 18.0),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(15.0, 8.0, 20.0, 15.0),
-            child: TextField(
-              decoration: InputDecoration(
-                labelText: "Number",
-                hintText: "11 9 7888-9988",
+            Padding(
+              padding: EdgeInsets.fromLTRB(15.0, 8.0, 20.0, 15.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Numero coletor",
+                  labelStyle: TextStyle(
+                    color: Colors.deepOrangeAccent,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.deepOrangeAccent,
+                    ),
+                  ),
+                  fillColor: Colors.redAccent,
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepOrangeAccent),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.looks_one,
+                    color: Colors.deepOrangeAccent,
+                  ),
+                ),
+                style: TextStyle(fontSize: 18.0),
+                keyboardType: TextInputType.number,
               ),
-              keyboardType: TextInputType.number,
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
