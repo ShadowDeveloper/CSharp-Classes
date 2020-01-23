@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:bytebank01/helper/constants.dart';
 import 'package:flutter/services.dart';
+import 'package:bytebank01/models/contact.dart';
 
-class ContactForm extends StatelessWidget {
+class ContactForm extends StatefulWidget {
+  @override
+  _ContactFormState createState() => _ContactFormState();
+}
+
+class _ContactFormState extends State<ContactForm> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _accountNumber = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,29 +27,32 @@ class ContactForm extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(15.0, 8.0, 20.0, 15.0),
               child: TextField(
+                controller: _nameController,
                 decoration: InputDecoration(
-                    labelText: "Nome coletor",
-                    labelStyle: TextStyle(
+                  labelText: "Nome coletor",
+                  labelStyle: TextStyle(
+                    color: Colors.deepOrangeAccent,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
                       color: Colors.deepOrangeAccent,
                     ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.deepOrangeAccent,
-                      ),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepOrangeAccent),
-                    ),
-                    suffixIcon: Icon(
-                      Icons.text_fields,
-                      color: Colors.deepOrangeAccent,
-                    )),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepOrangeAccent),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.text_fields,
+                    color: Colors.deepOrangeAccent,
+                  ),
+                ),
                 style: TextStyle(fontSize: 18.0),
               ),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(15.0, 8.0, 20.0, 15.0),
               child: TextField(
+                controller: _accountNumber,
                 decoration: InputDecoration(
                   labelText: "Numero coletor",
                   labelStyle: TextStyle(
@@ -71,17 +83,23 @@ class ContactForm extends StatelessWidget {
                   height: 45.0,
                   child: RaisedButton(
                     elevation: 0,
-                    onPressed: () {},
                     textColor: Colors.white,
                     child: Text(
                       ComumConstants().cadastrar.toUpperCase(),
-                      style: TextStyle(
-                        fontSize: 16.0
-                      ),
+                      style: TextStyle(fontSize: 16.0),
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6.0),
                     ),
+                    onPressed: () {
+                      final String name = _nameController.text;
+                      final int accountNumber =
+                          int.tryParse(_accountNumber.text);
+
+                      final Contact newContact = Contact(name, accountNumber);
+
+                      Navigator.pop(context, newContact);
+                    },
                   ),
                 ),
               ),

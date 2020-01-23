@@ -25,7 +25,7 @@ class Dashboard extends StatelessWidget with ComumConstants {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => ContactstList(),
+                      builder: (context) => ContactList(),
                     ),
                   );
                 },
