@@ -1,6 +1,6 @@
 class ComumConstants {
-  final String _appBarTitle = "NewPontoCloud";
 
+  final String _appBarTitle = "NewPontoCloud";
   String get appBarTitle {
     return _appBarTitle;
   } // Um get ou Set pode ser feito assim
@@ -11,4 +11,8 @@ class ComumConstants {
   final String _contactFormTitle = "New Collector";
   String get contactFormTitle => _contactFormTitle;
 
+  final String _cadastrar = "Cadastrar";
+  String get cadastrar {
+    return _cadastrar;
+  }
 }

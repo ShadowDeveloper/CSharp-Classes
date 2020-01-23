@@ -28,7 +28,6 @@ class ContactForm extends StatelessWidget {
                         color: Colors.deepOrangeAccent,
                       ),
                     ),
-                    fillColor: Colors.redAccent,
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.deepOrangeAccent),
                     ),
@@ -52,7 +51,6 @@ class ContactForm extends StatelessWidget {
                       color: Colors.deepOrangeAccent,
                     ),
                   ),
-                  fillColor: Colors.redAccent,
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.deepOrangeAccent),
                   ),
@@ -63,6 +61,29 @@ class ContactForm extends StatelessWidget {
                 ),
                 style: TextStyle(fontSize: 18.0),
                 keyboardType: TextInputType.number,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 0),
+              child: InkWell(
+                child: SizedBox(
+                  width: double.maxFinite,
+                  height: 45.0,
+                  child: RaisedButton(
+                    elevation: 0,
+                    onPressed: () {},
+                    textColor: Colors.white,
+                    child: Text(
+                      ComumConstants().cadastrar.toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 16.0
+                      ),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6.0),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
