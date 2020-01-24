@@ -1,3 +1,4 @@
+import 'package:bytebank01/screens/contact_item.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebank01/helper/constants.dart';
 import 'package:bytebank01/screens/contact_form.dart';
@@ -9,7 +10,6 @@ class ContactList extends StatefulWidget {
 }
 
 class _ContactListState extends State<ContactList> {
-
   final List<Contact> _contactList = List();
 
   @override
@@ -20,43 +20,30 @@ class _ContactListState extends State<ContactList> {
       ),
       body: Padding(
         padding: EdgeInsets.all(8.0),
-        child: ListView(
-          children: <Widget>[
-            Card(
-              child: ListTile(
-                title: Text(
-                  "Titulo",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                subtitle: Text(
-                  "SubTitulo",
-                  style: TextStyle(
-                    fontSize: 14.0,
-                  ),
-                ),
-              ),
-            )
-          ],
+        child: ListView.builder(
+          itemCount: _contactList.length,
+          itemBuilder: (context, index) {
+            final Contact contato = _contactList[index];
+            return ContactItem(contato);
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(
+          final Future _navigatorRouter = Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => ContactForm(),
             ),
-          )
-              .then(
-            (newContact) {
-              setState(() {
-                _contactList.add(newContact);
-              });
-              debugPrint(_contactList.toString());
+          );
 
+          _navigatorRouter.then(
+            (newContact) {
+              if (newContact != null) {
+                setState(() {
+                  _contactList.add(newContact);
+                });
+                debugPrint(_contactList.toString());
+              }
             },
           );
         },
