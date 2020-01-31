@@ -42,3 +42,9 @@ Future<List<Contact>> getAllContacts() async {
     });
   });
 }
+
+Future<int> deleteContact(int id) {
+  return createDatabase().then((db) {
+    return db.delete("contacts", where: "id = ?", whereArgs: [id]);
+  });
+}
