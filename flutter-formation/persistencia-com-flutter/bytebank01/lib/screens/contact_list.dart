@@ -21,34 +21,41 @@ class _ContactListState extends State<ContactList> {
         padding: EdgeInsets.all(8.0),
         child: FutureBuilder<List<Contact>>(
           // initialData: List(),
-          future: Future.delayed(Duration(seconds: 1)).then(
-            (value) => getAllContacts(),
-          ),
+          future: getAllContacts(),
           builder: (context, snapshot) {
-            if (snapshot.data != null) {
-              final List<Contact> _contactList = snapshot.data;
-              return ListView.builder(
-                itemCount: _contactList.length,
-                itemBuilder: (context, index) {
-                  final Contact contato = _contactList[index];
-                  return ContactItem(contato);
-                },
-              );
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                break;
+              case ConnectionState.waiting:
+                return SizedBox(
+                  width: double.maxFinite,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      CircularProgressIndicator(),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0),
+                        child: Text("Carregando..."),
+                      )
+                    ],
+                  ),
+                );
+                break;
+              case ConnectionState.active:
+                break;
+              case ConnectionState.done:
+                final List<Contact> _contactList = snapshot.data;
+                return ListView.builder(
+                  itemCount: _contactList.length,
+                  itemBuilder: (context, index) {
+                    final Contact contato = _contactList[index];
+                    return ContactItem(contato);
+                  },
+                );
+                break;
             }
-            return SizedBox(
-              width: double.maxFinite,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  CircularProgressIndicator(),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: Text("Carregando..."),
-                  )
-                ],
-              ),
-            );
+            return Text("Unknow error");
           },
         ),
       ),
