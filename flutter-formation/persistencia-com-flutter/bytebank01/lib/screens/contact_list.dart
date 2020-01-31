@@ -1,8 +1,8 @@
+import 'package:bytebank01/database/dao/contact_dao.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebank01/helper/constants.dart';
 import 'package:bytebank01/screens/contact_form.dart';
 import 'package:bytebank01/models/contact.dart';
-import 'package:bytebank01/database/app_database.dart';
 import 'package:bytebank01/screens/contact_item.dart';
 
 class ContactList extends StatefulWidget {
@@ -11,6 +11,8 @@ class ContactList extends StatefulWidget {
 }
 
 class _ContactListState extends State<ContactList> {
+  final ContactDao _dao = ContactDao();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,7 @@ class _ContactListState extends State<ContactList> {
         padding: EdgeInsets.all(8.0),
         child: FutureBuilder<List<Contact>>(
           // initialData: List(),
-          future: getAllContacts(),
+          future: _dao.getAllContacts(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
@@ -69,9 +71,11 @@ class _ContactListState extends State<ContactList> {
           _navigatorRouter.then(
             (newContact) {
               if (newContact != null) {
-                setState(() {
-                  getAllContacts();
-                });
+                setState(
+                  () {
+                    _dao.getAllContacts();
+                  },
+                );
               }
             },
           );

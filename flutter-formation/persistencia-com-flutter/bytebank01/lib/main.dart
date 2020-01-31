@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bytebank01/style/app_theme.dart';
 import 'package:bytebank01/screens/dashboard.dart';
-import 'package:bytebank01/database/app_database.dart';
+// import 'package:bytebank01/database/app_database.dart';
 
 // void main() => runApp(ByteBankApp());
 void main() {
