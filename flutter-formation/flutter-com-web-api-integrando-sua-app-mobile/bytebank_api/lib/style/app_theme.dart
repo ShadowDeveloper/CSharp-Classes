@@ -33,6 +33,11 @@ AppBarTheme setAppBarTheme(Color fontColor) {
     ),
     color: Colors.transparent,
     textTheme: TextTheme(
+      headline6: TextStyle(
+        color: Colors.deepOrangeAccent,
+        fontSize: 17,
+        fontWeight: FontWeight.bold
+      )
     ),
   );
 }

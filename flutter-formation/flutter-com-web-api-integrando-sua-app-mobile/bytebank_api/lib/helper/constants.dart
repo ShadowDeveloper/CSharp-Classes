@@ -1,5 +1,4 @@
 class ComumConstants {
-
   final String _appBarTitle = "NewPontoCloud";
   String get appBarTitle {
     return _appBarTitle;
@@ -15,4 +14,7 @@ class ComumConstants {
   String get cadastrar {
     return _cadastrar;
   }
+
+  final String _transactionFeed = "Transaction feed";
+  String get transactionFeed => _transactionFeed;
 }
