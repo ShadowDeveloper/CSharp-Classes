@@ -10,29 +10,15 @@ namespace _07_ByteBank
     {
         static void Main(string[] args)
         {
-
-            string testeUrl = "http://localhost:8081/ServicosComunicador/";
-            testeUrl = testeUrl.ToLower();
-
-            if (testeUrl.StartsWith("http://") && testeUrl.Contains("http://"))
-            {
-                Console.WriteLine("Caiu no HTTP");
-            }
-            else if (testeUrl.StartsWith("https://") && testeUrl.Contains("https://"))
-            {
-                Console.WriteLine("Caiu no HTTPs");
-            }
-
-
             try
             {
                 ContaCorrente conta = new ContaCorrente(544, 4688);
                 ContaCorrente conta2 = new ContaCorrente(545, 4678);
 
-                conta2.Transferir(-10, conta);
+                conta2.Transferir(1000, conta);
 
                 //conta.Depositar(50);
-                //conta.Sacar(-500);
+                conta.Sacar(-500);
                 //Console.WriteLine(conta.Saldo);
             }
             catch (ArgumentException ex)
@@ -42,7 +28,11 @@ namespace _07_ByteBank
             }
             catch (SaldoInsuficienteException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Saldo);
+                Console.WriteLine(ex.ValorSaque);
+
+                Console.WriteLine(ex.StackTrace);
+
                 Console.WriteLine("Exceção do Saldo insuficiente Exception");
             }
             catch (Exception ex)

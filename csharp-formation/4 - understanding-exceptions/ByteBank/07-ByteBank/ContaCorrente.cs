@@ -14,9 +14,7 @@ namespace _07_ByteBank
         public Cliente Titular { get; set; }
 
         public static int TotalDeContasCriadas { get; private set; }
-
         public static double TaxaOperacao { get; private set; }
-
         public int Numero { get; }
         public int Agencia { get; }
 
