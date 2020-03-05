@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:bytebank_api/style/app_theme.dart';
-import 'package:bytebank_api/screens/dashboard.dart';
+import 'package:bytebankapi/style/app_theme.dart';
+import 'package:bytebankapi/screens/dashboard.dart';
 
 // void main() => runApp(ByteBankApp());
 void main() {

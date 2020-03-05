@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:bytebank_api/database/dao/contact_dao.dart';
-import 'package:bytebank_api/helper/constants.dart';
-import 'package:bytebank_api/screens/contact_form.dart';
-import 'package:bytebank_api/models/contact.dart';
-import 'package:bytebank_api/screens/contact_item.dart';
+import 'package:bytebankapi/database/dao/contact_dao.dart';
+import 'package:bytebankapi/helper/constants.dart';
+import 'package:bytebankapi/screens/contact_form.dart';
+import 'package:bytebankapi/models/contact.dart';
+import 'package:bytebankapi/screens/contact_item.dart';
 
 class ContactList extends StatefulWidget {
   @override

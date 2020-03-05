@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bytebank_api/helper/constants.dart';
-import 'package:bytebank_api/models/contact.dart';
-import 'package:bytebank_api/database/dao/contact_dao.dart';
+import 'package:bytebankapi/helper/constants.dart';
+import 'package:bytebankapi/models/contact.dart';
+import 'package:bytebankapi/database/dao/contact_dao.dart';
 
 class ContactForm extends StatefulWidget {
   @override

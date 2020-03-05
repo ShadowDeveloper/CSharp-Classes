@@ -1,4 +1,4 @@
-package com.example.bytebank_api
+package com.example.bytebankapi
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

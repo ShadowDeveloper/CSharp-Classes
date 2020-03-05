@@ -1,4 +1,4 @@
-# bytebank_api
+# bytebankapi
 
 A new Flutter application.
 
