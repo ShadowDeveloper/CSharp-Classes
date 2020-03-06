@@ -21,23 +21,48 @@ class Dashboard extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Image.asset('images/bytebank_logo.png'),
           ),*/
-          Row(
-            children: <Widget>[
-              _FeatureItem(ComumConstants().contacts, Icons.branding_watermark),
-              _FeatureItem(ComumConstants().transactionFeed, Icons.atm),
-            ],
-          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: <Widget>[
+                _FeatureItem(
+                  ComumConstants().contacts,
+                  Icons.branding_watermark,
+                  onClick: () => _showContactList(context),
+                ),
+                _FeatureItem(
+                  ComumConstants().transactionFeed,
+                  Icons.atm,
+                  onClick: () => debugPrint("Transaction Feed Was clicked"),
+                ),
+                _FeatureItem(
+                  ComumConstants().transactionFeed,
+                  Icons.atm,
+                  onClick: () => debugPrint("Transaction Feed Was clicked"),
+                ),
+              ],
+            ),
+          )
         ],
+      ),
+    );
+  }
+
+  void _showContactList(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ContactList(),
       ),
     );
   }
 }
 
 class _FeatureItem extends StatelessWidget {
-  final String _label;
-  final IconData _iconData;
+  final String label;
+  final IconData iconData;
+  final Function onClick;
 
-  _FeatureItem(this._label, this._iconData);
+  _FeatureItem(this.label, this.iconData, {@required this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +72,7 @@ class _FeatureItem extends StatelessWidget {
         color: Theme.of(context).accentColor,
         child: InkWell(
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => ContactList(),
-              ),
-            );
+            onClick();
           },
           child: Container(
             width: 140.0,
@@ -63,12 +84,12 @@ class _FeatureItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Icon(
-                    _iconData,
+                    iconData,
                     color: Colors.white,
                     size: 30.0,
                   ),
                   Text(
-                    _label,
+                    label,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

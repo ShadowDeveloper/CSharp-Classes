@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData lightAppTheme() {
   return ThemeData(
-    appBarTheme:  setAppBarTheme(Colors.black45),
+    appBarTheme: setAppBarTheme(Colors.black),
     accentColor: Colors.deepOrangeAccent,
     scaffoldBackgroundColor: Colors.white,
     hintColor: Colors.deepOrangeAccent,
@@ -15,7 +15,7 @@ ThemeData lightAppTheme() {
 
 ThemeData darkAppTheme() {
   return ThemeData(
-    appBarTheme:  setAppBarTheme(Colors.white),
+    appBarTheme: setAppBarTheme(Colors.white),
     accentColor: Colors.deepOrangeAccent,
     scaffoldBackgroundColor: Colors.black12,
     buttonTheme: ButtonThemeData(
@@ -28,16 +28,14 @@ ThemeData darkAppTheme() {
 AppBarTheme setAppBarTheme(Color fontColor) {
   return AppBarTheme(
     elevation: 0,
-    iconTheme: IconThemeData(
-      color: fontColor
-    ),
+    iconTheme: IconThemeData(color: fontColor),
     color: Colors.transparent,
     textTheme: TextTheme(
-      headline: TextStyle(
-        color: Colors.deepOrangeAccent,
+      title: TextStyle(
+        color: fontColor,
         fontSize: 17,
-        fontWeight: FontWeight.bold
-      )
+        fontWeight: FontWeight.bold,
+      ),
     ),
   );
 }
