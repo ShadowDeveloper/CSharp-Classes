@@ -1,7 +1,9 @@
+import 'package:bytebankapi/screens/transactions_list.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebankapi/screens/contact_list.dart';
 import 'package:flutter/services.dart';
 import 'package:bytebankapi/helper/constants.dart';
+import 'package:path/path.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -33,12 +35,12 @@ class Dashboard extends StatelessWidget {
                 _FeatureItem(
                   ComumConstants().transactionFeed,
                   Icons.atm,
-                  onClick: () => debugPrint("Transaction Feed Was clicked"),
+                  onClick: () => _showTransactionList(context),
                 ),
                 _FeatureItem(
-                  ComumConstants().transactionFeed,
-                  Icons.atm,
-                  onClick: () => debugPrint("Transaction Feed Was clicked"),
+                  "Teste",
+                  Icons.access_time,
+                  onClick: () => _showTransactionList(context),
                 ),
               ],
             ),
@@ -53,6 +55,12 @@ class Dashboard extends StatelessWidget {
       MaterialPageRoute(
         builder: (context) => ContactList(),
       ),
+    );
+  }
+
+  void _showTransactionList(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => TransactionsList()),
     );
   }
 }
@@ -94,7 +102,7 @@ class _FeatureItem extends StatelessWidget {
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

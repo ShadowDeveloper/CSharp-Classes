@@ -25,9 +25,6 @@ class ByteBankApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _dao = ContactDao();
-
-
     return MaterialApp(
       theme: lightAppTheme(),
       darkTheme: darkAppTheme(),
