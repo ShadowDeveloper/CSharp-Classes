@@ -1,4 +1,4 @@
-import 'package:bytebankapi/database/dao/contact_dao.dart';
+import 'package:bytebankapi/api/webclient.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebankapi/style/app_theme.dart';
 import 'package:bytebankapi/screens/dashboard.dart';
@@ -9,6 +9,7 @@ void main() {
     ByteBankApp(),
   );
 
+  findAll();
   //save(Contact("Ivo", 122545, id: 2)).then((id) {
   //getAllContacts().then((contacts) => debugPrint(contacts.toString()));
   //});
@@ -17,7 +18,6 @@ void main() {
       debugPrint(contacts.toString());
     });
   });*/
-
 }
 
 class ByteBankApp extends StatelessWidget {

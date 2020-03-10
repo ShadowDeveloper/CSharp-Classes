@@ -17,7 +17,7 @@ class _ContactListState extends State<ContactList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(ComumConstants().contacts.toUpperCase()),
+        title: Text(ComumConstants().transfer.toUpperCase()),
       ),
       body: Padding(
         padding: EdgeInsets.all(8.0),

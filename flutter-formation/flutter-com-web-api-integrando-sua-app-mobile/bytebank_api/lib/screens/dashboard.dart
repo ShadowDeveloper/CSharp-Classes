@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:bytebankapi/screens/contact_list.dart';
 import 'package:flutter/services.dart';
 import 'package:bytebankapi/helper/constants.dart';
-import 'package:path/path.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -28,7 +27,7 @@ class Dashboard extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 _FeatureItem(
-                  ComumConstants().contacts,
+                  ComumConstants().transfer,
                   Icons.branding_watermark,
                   onClick: () => _showContactList(context),
                 ),

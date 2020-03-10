@@ -4,8 +4,8 @@ class ComumConstants {
     return _appBarTitle;
   } // Um get ou Set pode ser feito assim
 
-  final String _contacts = "collectors";
-  String get contacts => _contacts; // Um get ou Set pode ser feito assim
+  final String _transfer = "Transfer";
+  String get transfer => _transfer; // Um get ou Set pode ser feito assim
 
   final String _contactFormTitle = "New Collector";
   String get contactFormTitle => _contactFormTitle;
