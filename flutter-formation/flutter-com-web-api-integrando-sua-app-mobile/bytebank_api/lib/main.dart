@@ -9,7 +9,9 @@ void main() {
     ByteBankApp(),
   );
 
-  findAll();
+  findAll().then((transactions) {
+    print("new transactions $transactions");
+  });
   //save(Contact("Ivo", 122545, id: 2)).then((id) {
   //getAllContacts().then((contacts) => debugPrint(contacts.toString()));
   //});
