@@ -13,6 +13,8 @@ namespace _07_ByteBank
         private double _saldo = 100.45; //Underline para quando campo é privado e local
         public Cliente Titular { get; set; }
 
+        public int ContatadorDeSaquesNaoPermitidos { get; private set; }
+        public int ContadorDeTransferenciasNaoPermitidas { get; private set; }
         public static int TotalDeContasCriadas { get; private set; }
         public static double TaxaOperacao { get; private set; }
         public int Numero { get; }
@@ -83,6 +85,7 @@ namespace _07_ByteBank
 
             if (_saldo < valor)
             {
+                ContatadorDeSaquesNaoPermitidos++;
                 throw new SaldoInsuficienteException(Saldo, valor);
                 //throw new Sal doInsuficienteException("Saldo insuficiente para o saque no valor de " + valor);
             }
@@ -101,7 +104,17 @@ namespace _07_ByteBank
                 throw new ArgumentException("valor inválido para a transferência", nameof(valor));
             }
 
-            Sacar(valor);
+            try
+            {
+                Sacar(valor);
+            }
+            catch (SaldoInsuficienteException ex)
+            {
+                ContadorDeTransferenciasNaoPermitidas++;
+                throw;
+            }
+
+
             ContaDestino.Depositar(valor);
         }
 
