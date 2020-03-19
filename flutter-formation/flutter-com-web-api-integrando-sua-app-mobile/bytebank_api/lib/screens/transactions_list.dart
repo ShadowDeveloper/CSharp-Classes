@@ -1,4 +1,5 @@
 import 'package:bytebankapi/api/webclient.dart';
+import 'package:bytebankapi/components/centered_message.dart';
 import 'package:bytebankapi/components/progress.dart';
 import 'package:bytebankapi/screens/transaction_item.dart';
 import 'package:flutter/material.dart';
@@ -31,13 +32,20 @@ class TransactionsList extends StatelessWidget {
                   break;
                 case ConnectionState.done:
                   final List<Transaction> _transactionList = snapshot.data;
-                  return ListView.builder(
-                    itemCount: _transactionList.length,
-                    itemBuilder: (context, index) {
-                      final Transaction transaction = _transactionList[index];
-                      return TransactionItem(transaction);
-                    },
+                  if (_transactionList.isNotEmpty) {
+                    return ListView.builder(
+                      itemCount: _transactionList.length,
+                      itemBuilder: (context, index) {
+                        final Transaction transaction = _transactionList[index];
+                        return TransactionItem(transaction);
+                      },
+                    );
+                  }
+
+                  return CenteredMessage(
+                    message: "lista de transferência vazia",
                   );
+
                   break;
               }
               return Text("Unknow error");
