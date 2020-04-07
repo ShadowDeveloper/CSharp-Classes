@@ -8,6 +8,8 @@ import 'package:http_interceptor/interceptor_contract.dart';
 import 'package:http_interceptor/models/request_data.dart';
 import 'package:http_interceptor/models/response_data.dart';
 
+final String apiUrl = "http://10.0.0.216:8085";
+
 class LoggingInterceptor implements InterceptorContract {
   @override
   Future<RequestData> interceptRequest({RequestData data}) async {
@@ -34,8 +36,7 @@ Future<List<Transaction>> findAll() async {
     interceptors: [LoggingInterceptor()],
   );
 
-  final Response response =
-      await client.get("http://192.168.15.15:8080/transactions");
+  final Response response = await client.get("$apiUrl/transactions");
   final List<dynamic> decodedJson = jsonDecode(response.body);
   final List<Transaction> transactions = List();
 

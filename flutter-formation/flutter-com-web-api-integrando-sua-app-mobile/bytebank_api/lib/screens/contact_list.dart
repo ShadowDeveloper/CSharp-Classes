@@ -1,3 +1,4 @@
+import 'package:bytebankapi/components/progress.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebankapi/database/dao/contact_dao.dart';
 import 'package:bytebankapi/helper/constants.dart';
@@ -29,20 +30,7 @@ class _ContactListState extends State<ContactList> {
               case ConnectionState.none:
                 break;
               case ConnectionState.waiting:
-                return SizedBox(
-                  width: double.maxFinite,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      CircularProgressIndicator(),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                        child: Text("Carregando..."),
-                      )
-                    ],
-                  ),
-                );
+                return Progress(message: "Carregando...",);
                 break;
               case ConnectionState.active:
                 break;
