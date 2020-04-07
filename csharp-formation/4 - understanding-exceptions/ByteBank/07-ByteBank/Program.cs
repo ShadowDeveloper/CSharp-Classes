@@ -10,6 +10,26 @@ namespace _07_ByteBank
     {
         static void Main(string[] args)
         {
+
+
+            try
+            {
+                ContaCorrente conta1 = new ContaCorrente(4588, 123669);
+                ContaCorrente conta2 = new ContaCorrente(8977, 255633);
+
+                //conta1.Transferir(1000, conta2);
+                conta1.Sacar(5000);
+
+            }
+            catch (OperacaofinanceiraException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+
+                //Console.WriteLine("informações da INNER EXCEPTION (EXCEÇÃO INTERNA):");
+
+            }
+
             try
             {
                 ContaCorrente conta = new ContaCorrente(544, 4688);
