@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D6DB7384-6F1D-4991-B113-F69737B95870}</ProjectGuid>
+    <ProjectGuid>{0ECADAAF-7A4A-47B8-AC5B-056E9B37EE5C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>_08_ByteBank</RootNamespace>
     <AssemblyName>08-ByteBank</AssemblyName>
@@ -43,8 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente.cs" />
+    <Compile Include="ContaCorrente.cs" />
+    <Compile Include="LeitorDeArquivos.cs" />
+    <Compile Include="OperacaofinanceiraException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaldoInsuficienteException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
