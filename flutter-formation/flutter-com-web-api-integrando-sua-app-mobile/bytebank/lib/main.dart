@@ -1,4 +1,6 @@
 import 'package:bytebank/api/webclient.dart';
+import 'package:bytebank/models/contact.dart';
+import 'package:bytebank/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebank/style/app_theme.dart';
 import 'package:bytebank/screens/dashboard.dart';
@@ -9,9 +11,15 @@ void main() {
     ByteBankApp(),
   );
 
-  findAll().then((transactions) {
-    print("new transactions $transactions");
-  });
+  // save(Transaction(200.0, Contact('Ivo', 02554, id: 15)))
+  //     .then((transacao) => print(transacao));
+
+  // findAll().then((transactions) {
+  //   print("new transactions $transactions");
+  // });
+
+
+
   //save(Contact("Ivo", 122545, id: 2)).then((id) {
   //getAllContacts().then((contacts) => debugPrint(contacts.toString()));
   //});
