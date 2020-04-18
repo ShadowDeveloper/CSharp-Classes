@@ -8,7 +8,6 @@ import 'package:http_interceptor/interceptor_contract.dart';
 import 'package:http_interceptor/models/request_data.dart';
 import 'package:http_interceptor/models/response_data.dart';
 
-
 final String apiPort = "8081";
 final String apiUrl = "http://192.168.15.12:$apiPort";
 
@@ -38,7 +37,9 @@ Future<List<Transaction>> findAll() async {
     interceptors: [LoggingInterceptor()],
   );
 
-  final Response response = await client.get("$apiUrl/transactions");
+  final Response response = await client.get("$apiUrl/transactions").timeout(
+        Duration(seconds: 15),
+      );
   final List<dynamic> decodedJson = jsonDecode(response.body);
   final List<Transaction> transactions = List();
 

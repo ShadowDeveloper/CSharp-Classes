@@ -31,19 +31,28 @@ class TransactionsList extends StatelessWidget {
                 case ConnectionState.active:
                   break;
                 case ConnectionState.done:
-                  final List<Transaction> _transactionList = snapshot.data;
-                  if (_transactionList.isNotEmpty) {
-                    return ListView.builder(
-                      itemCount: _transactionList.length,
-                      itemBuilder: (context, index) {
-                        final Transaction transaction = _transactionList[index];
-                        return TransactionItem(transaction);
-                      },
-                    );
+                  if (snapshot.hasData) {
+                    final List<Transaction> _transactionList = snapshot.data;
+                    if (_transactionList.isNotEmpty) {
+                      return ListView.builder(
+                        itemCount: _transactionList.length,
+                        itemBuilder: (context, index) {
+                          final Transaction transaction =
+                              _transactionList[index];
+                          return TransactionItem(transaction);
+                        },
+                      );
+                    }
                   }
 
-                  return CenteredMessage(
-                    message: "lista de transferência vazia",
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CenteredMessage(
+                        message: "No transactions found",
+                        icon: Icons.warning,
+                      )
+                    ],
                   );
 
                   break;
