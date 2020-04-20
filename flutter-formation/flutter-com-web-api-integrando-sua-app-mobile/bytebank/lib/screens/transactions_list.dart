@@ -1,5 +1,4 @@
 import 'package:bytebank/api/interceptors/webclients/transactions_webclient.dart';
-import 'package:bytebank/api/webclient.dart';
 import 'package:bytebank/components/centered_message.dart';
 import 'package:bytebank/components/progress.dart';
 import 'package:bytebank/screens/transaction_item.dart';

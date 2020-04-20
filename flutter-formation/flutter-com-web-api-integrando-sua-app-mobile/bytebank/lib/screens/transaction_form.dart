@@ -1,5 +1,4 @@
 import 'package:bytebank/api/interceptors/webclients/transactions_webclient.dart';
-import 'package:bytebank/api/webclient.dart';
 import 'package:bytebank/components/button.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/models/transaction.dart';
