@@ -1,4 +1,5 @@
 import 'package:bytebank/components/progress.dart';
+import 'package:bytebank/screens/transaction_form.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebank/database/dao/contact_dao.dart';
 import 'package:bytebank/helper/constants.dart';
@@ -30,7 +31,9 @@ class _ContactListState extends State<ContactList> {
               case ConnectionState.none:
                 break;
               case ConnectionState.waiting:
-                return Progress(message: "Carregando...",);
+                return Progress(
+                  message: "Carregando...",
+                );
                 break;
               case ConnectionState.active:
                 break;
@@ -40,7 +43,16 @@ class _ContactListState extends State<ContactList> {
                   itemCount: _contactList.length,
                   itemBuilder: (context, index) {
                     final Contact contato = _contactList[index];
-                    return ContactItem(contato);
+                    return ContactItem(
+                      contato,
+                      onClick: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => TransactionForm(contato),
+                          ),
+                        );
+                      },
+                    );
                   },
                 );
                 break;

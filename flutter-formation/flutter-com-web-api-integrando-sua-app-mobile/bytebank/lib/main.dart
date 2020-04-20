@@ -19,7 +19,6 @@ void main() {
   // });
 
 
-
   //save(Contact("Ivo", 122545, id: 2)).then((id) {
   //getAllContacts().then((contacts) => debugPrint(contacts.toString()));
   //});

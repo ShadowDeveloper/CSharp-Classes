@@ -1,3 +1,4 @@
+import 'package:bytebank/components/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bytebank/helper/constants.dart';
@@ -77,35 +78,16 @@ class _ContactFormState extends State<ContactForm> {
                 keyboardType: TextInputType.number,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 0),
-              child: InkWell(
-                child: SizedBox(
-                  width: double.maxFinite,
-                  height: 45.0,
-                  child: RaisedButton(
-                    elevation: 0,
-                    textColor: Colors.white,
-                    child: Text(
-                      ComumConstants().cadastrar.toUpperCase(),
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6.0),
-                    ),
-                    onPressed: () {
-                      final String name = _nameController.text;
-                      final int accountNumber =
-                          int.tryParse(_accountNumber.text);
+            ButtonForm(
+              ComumConstants().cadastrar.toUpperCase(),
+              onPressedFuncion: () {
+                final String name = _nameController.text;
+                final int accountNumber = int.tryParse(_accountNumber.text);
 
-                      final Contact newContact = Contact(name, accountNumber);
-
-                      _dao.save(newContact).then((id) => Navigator.pop(context, id));
-                    },
-                  ),
-                ),
-              ),
-            ),
+                final Contact newContact = Contact(name, accountNumber);
+                _dao.save(newContact).then((id) => Navigator.pop(context, id));
+              },
+            )
           ],
         ),
       ),
