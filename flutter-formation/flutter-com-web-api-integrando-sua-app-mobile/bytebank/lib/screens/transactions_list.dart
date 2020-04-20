@@ -1,3 +1,4 @@
+import 'package:bytebank/api/interceptors/webclients/transactions_webclient.dart';
 import 'package:bytebank/api/webclient.dart';
 import 'package:bytebank/components/centered_message.dart';
 import 'package:bytebank/components/progress.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:bytebank/models/transaction.dart';
 
 class TransactionsList extends StatelessWidget {
+
+  final TransactionsWebClient _webClient = new TransactionsWebClient();
   final List<Transaction> transactions = List();
 
   @override
@@ -19,7 +22,7 @@ class TransactionsList extends StatelessWidget {
           child: FutureBuilder<List<Transaction>>(
             // future: findAll(),
             future: Future.delayed(Duration(seconds: 2)).then(
-              (value) => findAll(),
+              (value) => _webClient.findAll(),
             ), // Para gerar um atraso na requisição e assim podemos ver o loading
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {

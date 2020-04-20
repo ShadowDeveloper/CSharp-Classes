@@ -1,3 +1,4 @@
+import 'package:bytebank/api/interceptors/webclients/transactions_webclient.dart';
 import 'package:bytebank/api/webclient.dart';
 import 'package:bytebank/components/button.dart';
 import 'package:bytebank/models/contact.dart';
@@ -14,6 +15,7 @@ class TransactionForm extends StatefulWidget {
 }
 
 class _TransactionFormState extends State<TransactionForm> {
+  final TransactionsWebClient _webClient = new TransactionsWebClient();
   final TextEditingController _valueController = TextEditingController();
 
   @override
@@ -58,7 +60,7 @@ class _TransactionFormState extends State<TransactionForm> {
                 onPressedFuncion: () {
                   final double value = double.tryParse(_valueController.text);
                   final transactionCreated = Transaction(value, widget.contact);
-                  save(transactionCreated).then((transaction) {
+                  _webClient.save(transactionCreated).then((transaction) {
                     if (transaction != null) {
                       Navigator.pop(context);
                     }
