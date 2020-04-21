@@ -19,9 +19,12 @@ class TransactionsWebClient {
           Duration(seconds: 15),
         );
 
-    List<Transaction> transactions = _toTransactions(response);
+    //Receber um objeto em que o Dart entenda para fazer a conversão
+    final List<dynamic> decodedJson = jsonDecode(response.body);
 
-    return transactions;
+    return decodedJson
+        .map((dynamic json) => Transaction.fromJson(json))
+        .toList();
   }
 
   Future<Transaction> save(Transaction transaction) async {
@@ -38,22 +41,6 @@ class TransactionsWebClient {
           Duration(seconds: 15),
         );
 
-    return _toTransaction(response);
-  }
-
-  List<Transaction> _toTransactions(Response response) {
-    final List<dynamic> decodedJson = jsonDecode(
-        response.body); //Receber um objeto json e transformar em objeto dart
-
-    final List<Transaction> transactions = List();
-    for (Map<String, dynamic> transactionJson in decodedJson) {
-      transactions.add(Transaction.fromJson(transactionJson));
-    }
-    return transactions;
-  }
-
-  Transaction _toTransaction(Response response) {
-    Map<String, dynamic> transactionResponse = jsonDecode(response.body);
-    return Transaction.fromJson(transactionResponse);
+    return Transaction.fromJson(jsonDecode(response.body));
   }
 }
