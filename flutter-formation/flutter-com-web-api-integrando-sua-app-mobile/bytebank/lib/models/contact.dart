@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'contact.g.dart';
+
+@JsonSerializable()
 class Contact {
   final int id;
   final String name;
@@ -10,15 +15,8 @@ class Contact {
     return 'Contact{_name: $name, _accountNumber: $accountNumber, _id: $id,}';
   }
 
-//Receber um objeto json e transformar em objeto dart
-  Contact.fromJson(json)
-      : id = json['id'],
-        name = json['name'],
-        accountNumber = json['accountNumber'];
+  factory Contact.fromJson(Map<String, dynamic> json) =>
+      _$ContactFromJson(json);
 
-//Receber um objeto dart e transformar em objeto json para servidor
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'accountNumber': accountNumber,
-      };
+  Map<String, dynamic> toJson() => _$ContactToJson(this);
 }

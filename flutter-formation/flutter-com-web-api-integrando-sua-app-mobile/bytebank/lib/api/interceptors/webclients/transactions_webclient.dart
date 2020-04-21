@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/models/transaction.dart';
 import 'package:http/http.dart';
 
