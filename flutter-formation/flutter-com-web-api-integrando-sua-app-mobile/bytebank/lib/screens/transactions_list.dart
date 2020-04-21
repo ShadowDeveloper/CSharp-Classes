@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:bytebank/models/transaction.dart';
 
 class TransactionsList extends StatelessWidget {
-
   final TransactionsWebClient _webClient = new TransactionsWebClient();
   final List<Transaction> transactions = List();
 
@@ -14,7 +13,7 @@ class TransactionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Transactions'),
+          title: Text('Transactions'.toUpperCase()),
         ),
         body: Padding(
           padding: EdgeInsets.all(8.0),

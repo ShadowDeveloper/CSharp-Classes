@@ -18,7 +18,7 @@ class TransactionItem extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          _transaction.contact.accountNumber.toString(),
+          '${_transaction.contact.accountNumber.toString()} - ${_transaction.contact.name}',
           style: TextStyle(
             fontSize: 16.0,
           ),
