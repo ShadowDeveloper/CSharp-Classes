@@ -6,10 +6,6 @@ import '../../webclient.dart';
 
 const String apiPort = "8081";
 const String apiUrl = "http://192.168.15.12:$apiPort";
-const Map<String, String> apiHeaders = {
-  "Content-Type": "application/json",
-  "password": "2000"
-};
 
 class TransactionsWebClient {
   Future<List<Transaction>> findAll() async {
@@ -25,7 +21,12 @@ class TransactionsWebClient {
         .toList();
   }
 
-  Future<Transaction> save(Transaction transaction) async {
+  Future<Transaction> save(Transaction transaction, String password) async {
+    final Map<String, String> apiHeaders = {
+      "Content-Type": "application/json",
+      "password": password
+    };
+
     final String transactionJson = jsonEncode(transaction
         .toJson()); //Receber um objeto dart e transformar em objeto json para servidor
 
