@@ -62,26 +62,34 @@ class _TransactionFormState extends State<TransactionForm> {
                   final transactionCreated = Transaction(value, widget.contact);
 
                   showDialog(
-                      context: context,
-                      builder: (context) {
-                        return TransacationAuthDialog(
-                          onConfirm: (String password) {
-                            _webClient
-                                .save(transactionCreated, password)
-                                .then((transaction) {
-                              if (transaction != null) {
-                                Navigator.pop(context);
-                              }
-                            });
-                          },
-                        );
-                      });
+                    context: context,
+                    builder: (contextDialog) {
+                      /* Repare que mudamos o nome do contexto para ContextDialog, 
+                      para que o app saiba qual contexto fechar, no caso o certo seria o context mesmo.*/
+                      return TransacationAuthDialog(
+                        onConfirm: (String password) {
+                          _save(transactionCreated, password, context);
+                        },
+                      );
+                    },
+                  );
                 },
               )
             ],
           ),
         ),
       ),
+    );
+  }
+
+  void _save(Transaction transactionCreated, String password,
+      BuildContext context) async {
+    _webClient.save(transactionCreated, password).then(
+      (transaction) {
+        if (transaction != null) {
+          Navigator.pop(context);
+        }
+      },
     );
   }
 }
