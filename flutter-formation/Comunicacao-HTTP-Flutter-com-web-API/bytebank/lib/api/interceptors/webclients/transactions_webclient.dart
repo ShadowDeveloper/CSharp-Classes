@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 import '../../webclient.dart';
 
 const String apiPort = "8081";
-const String apiUrl = "http://192.168.15.16:$apiPort";
+const String apiUrl = "http://192.168.15.12:$apiPort";
 
 class TransactionsWebClient {
   Future<List<Transaction>> findAll() async {
@@ -42,10 +42,10 @@ class TransactionsWebClient {
 
     if (response.statusCode == 400) {
       throw Exception("There was an error submtting transaction");
-    } else if (response.statusCode == 400) {
+    } else if (response.statusCode == 401) {
       throw Exception("authentication failed");
+    } else {
+      return Transaction.fromJson(jsonDecode(response.body));
     }
-
-    return Transaction.fromJson(jsonDecode(response.body));
   }
 }
