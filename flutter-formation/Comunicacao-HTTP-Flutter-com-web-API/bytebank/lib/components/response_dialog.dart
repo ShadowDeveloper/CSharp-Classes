@@ -49,7 +49,7 @@ class ResponseDialog extends StatelessWidget {
                 ),
               ),
             ),
-            visible: message.isNotEmpty,
+            visible: message != null && message.isNotEmpty,
           )
         ],
       ),

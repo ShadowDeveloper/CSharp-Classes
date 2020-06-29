@@ -1,51 +1,41 @@
 import 'dart:convert';
+
+import 'package:bytebank/api/webclient.dart';
 import 'package:bytebank/models/transaction.dart';
 import 'package:http/http.dart';
 
-import '../../webclient.dart';
-
-const String apiPort = "8081";
-const String apiUrl = "http://192.168.15.12:$apiPort";
-
-class TransactionsWebClient {
+class TransactionWebClient {
   Future<List<Transaction>> findAll() async {
-    final Response response = await client.get("$apiUrl/transactions").timeout(
-          Duration(seconds: 15),
-        );
-
-    //Receber um objeto em que o Dart entenda para fazer a conversão
+    final Response response =
+        await client.get(baseUrl + "/transactions");
     final List<dynamic> decodedJson = jsonDecode(response.body);
-
     return decodedJson
         .map((dynamic json) => Transaction.fromJson(json))
         .toList();
   }
 
   Future<Transaction> save(Transaction transaction, String password) async {
-    final Map<String, String> apiHeaders = {
-      "Content-Type": "application/json",
-      "password": password
-    };
+    final String transactionJson = jsonEncode(transaction.toJson());
 
-    final String transactionJson = jsonEncode(transaction
-        .toJson()); //Receber um objeto dart e transformar em objeto json para servidor
+    final Response response = await client.post(baseUrl,
+        headers: {
+          'Content-type': 'application/json',
+          'password': password,
+        },
+        body: transactionJson);
 
-    final Response response = await client
-        .post(
-          "$apiUrl/transactions",
-          body: transactionJson,
-          headers: apiHeaders,
-        )
-        .timeout(
-          Duration(seconds: 15),
-        );
-
-    if (response.statusCode == 400) {
-      throw Exception("There was an error submtting transaction");
-    } else if (response.statusCode == 401) {
-      throw Exception("authentication failed");
-    } else {
+    if (response.statusCode == 200) {
       return Transaction.fromJson(jsonDecode(response.body));
     }
+
+    _throwHttpError(response.statusCode);
   }
+
+  void _throwHttpError(int statusCode) =>
+      throw Exception(_statusCodeResponses[statusCode]);
+
+  static final Map<int, String> _statusCodeResponses = {
+    400: 'there was an error submitting transaction',
+    401: 'authentication failed'
+  };
 }

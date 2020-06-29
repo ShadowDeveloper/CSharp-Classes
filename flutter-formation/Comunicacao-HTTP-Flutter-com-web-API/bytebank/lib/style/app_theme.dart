@@ -8,7 +8,21 @@ ThemeData lightAppTheme() {
     hintColor: Colors.deepOrangeAccent,
     buttonTheme: ButtonThemeData(
       buttonColor: Colors.deepOrangeAccent,
-      textTheme: ButtonTextTheme.accent,
+      // colorScheme: ColorScheme(
+      //   primary: Colors.white,
+      //   primaryVariant: Colors.white,
+      //   secondary: Colors.white,
+      //   secondaryVariant: Colors.white,
+      //   surface: Colors.white,
+      //   background: Colors.deepOrangeAccent,
+      //   error: Colors.deepOrangeAccent,
+      //   onPrimary: Colors.deepOrangeAccent,
+      //   onSecondary: Colors.deepOrangeAccent,
+      //   onSurface: Colors.deepOrangeAccent,
+      //   onBackground: Colors.deepOrangeAccent,
+      //   onError: Colors.deepOrangeAccent,
+      //   brightness: Brightness.dark,
+      // ),
     ),
   );
 }

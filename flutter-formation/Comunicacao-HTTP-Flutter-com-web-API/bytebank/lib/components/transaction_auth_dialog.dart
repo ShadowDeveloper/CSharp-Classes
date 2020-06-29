@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class TransacationAuthDialog extends StatefulWidget {
+class TransactionAuthDialog extends StatefulWidget {
   final Function(String password) onConfirm;
 
-  TransacationAuthDialog({@required this.onConfirm});
+  TransactionAuthDialog({@required this.onConfirm});
 
   @override
-  _TransacationAuthDialogState createState() => _TransacationAuthDialogState();
+  _TransactionAuthDialogState createState() => _TransactionAuthDialogState();
 }
 
-class _TransacationAuthDialogState extends State<TransacationAuthDialog> {
+class _TransactionAuthDialogState extends State<TransactionAuthDialog> {
   final TextEditingController passwordController = TextEditingController();
 
   @override

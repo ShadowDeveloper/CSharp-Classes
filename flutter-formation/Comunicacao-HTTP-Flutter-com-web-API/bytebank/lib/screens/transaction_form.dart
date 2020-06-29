@@ -1,10 +1,9 @@
-import 'package:bytebank/api/interceptors/webclients/transactions_webclient.dart';
-import 'package:bytebank/components/button.dart';
 import 'package:bytebank/components/response_dialog.dart';
 import 'package:bytebank/components/transaction_auth_dialog.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/models/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:bytebank/api/interceptors/webclients/transactions_webclient.dart';
 
 class TransactionForm extends StatefulWidget {
   final Contact contact;
@@ -16,8 +15,8 @@ class TransactionForm extends StatefulWidget {
 }
 
 class _TransactionFormState extends State<TransactionForm> {
-  final TransactionsWebClient _webClient = new TransactionsWebClient();
   final TextEditingController _valueController = TextEditingController();
+  final TransactionWebClient _webClient = TransactionWebClient();
 
   @override
   Widget build(BuildContext context) {
@@ -56,25 +55,34 @@ class _TransactionFormState extends State<TransactionForm> {
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                 ),
               ),
-              ButtonForm(
-                'Transfer'.toUpperCase(),
-                onPressedFuncion: () {
-                  final double value = double.tryParse(_valueController.text);
-                  final transactionCreated = Transaction(value, widget.contact);
-
-                  showDialog(
-                    context: context,
-                    builder: (contextDialog) {
-                      /* Repare que mudamos o nome do contexto para ContextDialog, 
-                      para que o app saiba qual contexto fechar, no caso o certo seria o context mesmo.*/
-                      return TransacationAuthDialog(
-                        onConfirm: (String password) {
-                          _save(transactionCreated, password, context);
-                        },
-                      );
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: SizedBox(
+                  width: double.maxFinite,
+                  child: RaisedButton(
+                    child: Text(
+                      'Transfer',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                      final double value =
+                          double.tryParse(_valueController.text);
+                      final transactionCreated =
+                          Transaction(value, widget.contact);
+                      showDialog(
+                          context: context,
+                          builder: (contextDialog) {
+                            return TransactionAuthDialog(
+                              onConfirm: (String password) {
+                                _save(transactionCreated, password, context);
+                              },
+                            );
+                          });
                     },
-                  );
-                },
+                  ),
+                ),
               )
             ],
           ),
@@ -83,24 +91,25 @@ class _TransactionFormState extends State<TransactionForm> {
     );
   }
 
-  void _save(Transaction transactionCreated, String password,
-      BuildContext context) async {
-    final Transaction transaction = await _webClient
-        .save(transactionCreated, password)
-        .catchError((onError) {
+  void _save(
+    Transaction transactionCreated,
+    String password,
+    BuildContext context,
+  ) async {
+    final Transaction transaction =
+        await _webClient.save(transactionCreated, password).catchError((e) {
       showDialog(
-        context: context,
-        builder: (contexDialog) {
-          return FailureDialog(onError.message);
-        },
-      );
-    }, test: (onError) => onError is Exception);
+          context: context,
+          builder: (contextDialog) {
+            return FailureDialog(e.message);
+          });
+    }, test: (e) => e is Exception);
 
     if (transaction != null) {
       await showDialog(
           context: context,
-          builder: (contexDialog) {
-            return SuccessDialog("Successful transaction");
+          builder: (contextDialog) {
+            return SuccessDialog('successful transaction');
           });
       Navigator.pop(context);
     }
